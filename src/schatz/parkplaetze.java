@@ -8,8 +8,13 @@ import java.io.IOException;
 public class parkplaetze {
 
 	public static void main(String[] args) {
-		String eingabel1 = "100 20";
-		String eingabel2 = "19 -19 11 -11 1 -1 17 -17 10 7 -10 -7 3 14 -14 -3 13 -13 4 12 20 18 6 16 -18 -12 -16 5 -5 -20 -6 -4 8 15 -8 2 -15 9 -2 -9";
+		String haupteingabe = loadInputData("TestDaten_Level1.1");
+		String[] haupteingabea = haupteingabe.split(" ");
+		String eingabel1 = (haupteingabea[0]) + " " + (haupteingabea[0]);
+		String eingabel2 = "";
+		for(int i = 2; i < haupteingabea.length-1; i++) {
+			eingabel2 += haupteingabea[i];
+		}
 		String[] eingabe = eingabel1.split(" ");
 		String[] autos = eingabel2.split(" ");
 		int max = 0;
@@ -25,7 +30,7 @@ public class parkplaetze {
 			if(autosi[i]>0) {
 				platz[autosi[i]] = 1;
 			} else {
-				platz[(autosi[i])*=-1] = 0;
+				platz[((autosi[i])*=-1)] = 0;
 			}
 			for(int c = 0; c < platz.length-1 ; c++) {
 				if(platz[c]==1) {
@@ -33,7 +38,7 @@ public class parkplaetze {
 				}
 			}
 			if(counter>max) {
-				counter = max;
+				max = counter;
 			}
 		}
 		
